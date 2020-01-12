@@ -46,6 +46,18 @@ void insert(Node* curr, int key) {
   }
 }
 
+void remove(Node* curr, int key) {
+  if (curr != nullptr) {
+    if (curr->key < key) {
+      remove(curr->right, key);
+    } else if (curr->key > key) {
+      remove(curr->left, key);
+    } else {
+
+    }
+  }
+}
+
 void traverse(Node* curr) {
   if (curr != nullptr) {
     traverse(curr->left);
@@ -87,6 +99,19 @@ void find_rank(Node* curr, int key, int& sum) {
       }
       sum++;
     }
+  }
+}
+
+int curr_cnt = 0;
+
+void nth_largest(Node* curr, int nth) {
+  if (curr != nullptr) {
+    nth_largest(curr->right, nth);
+    curr_cnt++;
+    if (nth == curr_cnt) {
+      cout << nth << "-th value : " << curr->key << "\n";
+    }
+    nth_largest(curr->left, nth);
   }
 }
 
@@ -140,7 +165,10 @@ int main() {
 
   int sum = 0;
   find_rank(root, 55, sum);
-  cout << "rank : " << sum << "\n";
+  cout << "rank : " << sum << "\n\n";
+
+  curr_cnt = 0;
+  nth_largest(root, 8);
 
   return 0;
 }
