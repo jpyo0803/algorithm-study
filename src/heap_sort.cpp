@@ -23,7 +23,7 @@ void swap(int* a, int* b) {
   *b = tmp;
 }
 
-int heap_size = 10;
+int heap_size = 1000;
 vector<int> arr;
 
 void build_max_heap();
@@ -34,7 +34,7 @@ int main() {
   srand((unsigned int)time(NULL));
 
   for (int i = 0; i < heap_size; i++) {
-    arr.push_back((rand() % 50) - 25);
+    arr.push_back((rand() % heap_size) - heap_size/2);
   }
 
   cout << "before sorted: \n";
@@ -47,6 +47,14 @@ int main() {
   }
   cout << "\nafter sorted: \n";
   arr_print(arr);
+
+  bool pass = true;
+  for (int i = 0; i < arr.size()-1; i++) {
+    if (arr[i] > arr[i+1]) pass = false;
+  }
+
+  if (pass) cout << "passed\n";
+  else cout << "Failed to pass\n";
 
   return 0;
 }
