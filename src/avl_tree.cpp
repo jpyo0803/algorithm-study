@@ -72,15 +72,13 @@ Node* insert(Node* node, int key) {
   int balance = get_balance(node);
 
   if (balance > 1) {
-    int balance2 = get_balance(node->right);
-    if (balance < -1) {
+    if (get_balance(node->right) < -1) {
       left_rotate(node->right);
     }
     return right_rotate(node);
 
   } else if (balance < -1) {
-    int balance2 = get_balance(node->left);
-    if (balance2 > 1) {
+    if (get_balance(node->left) > 1) {
       right_rotate(node->left);
     }
     return left_rotate(node);
@@ -109,10 +107,11 @@ void traverse(Node* n) {
 }
 
 int main() {
-  int n = 15;
+  int n = 10;
   Node* root = nullptr;
   for (int i = 1; i <= n; i++) {
     root = insert(root, i);
+    cout << root->key << endl;
   }
 
   traverse(root);
