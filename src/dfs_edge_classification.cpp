@@ -1,6 +1,8 @@
 /*
  This dfs example can explore every graph 
  and also classifies tree edge, forward edge, backward edge, and cross edge
+ Time complexity = O(V + E) directed 
+                 = O(V + 2E) undirected
 */
 
 #include <cstdio>
@@ -14,9 +16,13 @@ int parent[7];
 int depth[7];
 int groups[7];
 
+int time_complexity = 0;
+
 void dfs_visit(int cn, int group, int ith) {
     printf("%d-th : %d\n", ith, cn);
+    time_complexity++;
     for (auto nn : nodes[cn]) {
+        time_complexity++;
         if (parent[nn] == -1) {
             printf("%d -> %d : tree edge\n", cn, nn);
             parent[nn] = cn;
@@ -50,14 +56,23 @@ void dfs() {
 }
 
 int main() {
-    int N;
-    scanf("%d", &N);
-    for (int i = 0; i < N; i++) {
-        int a ,b;
-        scanf("%d%d", &a, &b);
-        nodes[a].push_back(b);
+    int E = 8; // # edges
+    vector<pair<int, int>> edges; // u -> v
+    edges.emplace_back(1, 2);
+    edges.emplace_back(2, 5);
+    edges.emplace_back(5, 4);
+    edges.emplace_back(4, 2);
+    edges.emplace_back(3, 6);
+    edges.emplace_back(6, 6);
+    edges.emplace_back(1, 4);
+    edges.emplace_back(3, 5);
+
+    for (auto edge : edges) {
+        nodes[edge.first].push_back(edge.second); 
+        nodes[edge.second].push_back(edge.first);  //if undirected graph
     }
 
     dfs();
+    printf("Time complexity = %d\n", time_complexity);
     return 0;
 }
