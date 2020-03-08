@@ -1,1 +1,3 @@
-this is document1. My name is Brian Pyo. Most of the sentences must be very similar.
+this is document1. 
+My name is Brian Pyo. 
+Most of the sentences must be very similar.
