@@ -10,7 +10,7 @@ problem : https://www.acmicpc.net/problem/11049
 
 using namespace std;
 
-#define MODE 2 // Tabulation(Bottom-up) = 1, Memoization(Top-down) = 2
+#define MODE 1 // Tabulation(Bottom-up) = 1, Memoization(Top-down) = 2
 
 const int max_size = 500;
 
