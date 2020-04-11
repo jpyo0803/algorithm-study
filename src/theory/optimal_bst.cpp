@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#define MODE 0 // 0 = memoization, 1 = tabulation
+#define MODE 1 // 0 = memoization, 1 = tabulation
 
 using namespace std;
 
@@ -19,7 +19,7 @@ double w[N + 1][N]; // sum of probability for i ... j
 int root[N][N];
 
 #if (MODE == 0)
-bool e_filled[N + 3][N + 2];
+bool e_filled[N + 1][N + 1];
 
 double fill_w(int i, int j) {
     if (j == i - 1) {
