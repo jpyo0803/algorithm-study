@@ -32,5 +32,9 @@
 *.app
 
 # Build folder
-build/
+build
 .vscode
+
+# etc
+.idea
+cmake-build-debug
