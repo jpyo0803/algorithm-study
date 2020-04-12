@@ -4,6 +4,7 @@
 //
 
 #include <iostream>
+
 using namespace std;
 
 int ugly_number[1690];
@@ -16,6 +17,7 @@ public:
         if (c < res) res = c;
         return res;
     }
+
     int nthUglyNumber(int n) {
         ugly_number[0] = 1;
 
@@ -43,8 +45,9 @@ public:
         return ugly_number[n - 1];
     }
 };
+
 int main() {
     Solution s;
-    cout << s.nthUglyNumber(1690);
+    cout << s.nthUglyNumber(10);
     return 0;
 }
