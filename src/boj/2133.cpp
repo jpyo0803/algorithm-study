@@ -49,4 +49,5 @@ int main() {
 #else
     cout << tabulate_tiling_3n(N);
 #endif
+    return 0;
 }
