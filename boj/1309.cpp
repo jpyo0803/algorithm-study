@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-#define MODE 0 // 0 = Memoization, 1 = Tabulation
+#define MODE 1 // 0 = Memoization, 1 = Tabulation
 
 using namespace std;
 
