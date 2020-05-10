@@ -47,14 +47,14 @@ vector<Z> FFT(vector<Z>& a) {
         Ao[i] = a[2 * i + 1];
     }
 
-    vector<Z> Ye = FFT(Ae);
+    vector<Z> Ye = FFT(Ae); // Aeven
     vector<Z> Yo = FFT(Ao);
 
     vector<Z> Y(n);
 
     for (int k = 0; k < n / 2; k++) {
-        Y[k] = Ye[k] + w[k] * Yo[k];
-        Y[k + n / 2] = Ye[k] - w[k] * Yo[k];
+        Y[k] = Ye[k] + w[k] * Yo[k]; // I * Yeven + D * Yodd
+        Y[k + n / 2] = Ye[k] - w[k] * Yo[k]; // I * Yeven - D * Yodd
     }
     return Y;
 }
