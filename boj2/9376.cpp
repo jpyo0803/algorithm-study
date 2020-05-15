@@ -43,14 +43,11 @@ void solve(info &sp, int i) {
         frontier.pop_front();
         for (int j = 0; j < 4; j++) {
             int vi{u.i + d[j][0]}, vj{u.j + d[j][1]};
-            if (vi >= 0 && vi <= H + 1 && vj >= 0 && vj <= W + 1 && map[vi][vj] != WALL) {
+            if (vi >= 0 && vi <= H + 1 && vj >= 0 && vj <= W + 1 && map[vi][vj] != WALL && nbs[vi][vj][i] == -1) {
                 int vnb = u.nb + (map[vi][vj] == DOOR);
-                if (vnb < nbs[vi][vj][i]) {
-                    nbs[vi][vj][i] = vnb;
-                    info temp{vi, vj, vnb};
-                    if (map[vi][vj] == DOOR) frontier.push_back(temp);
-                    else frontier.push_front(temp);
-                }
+                if (map[vi][vj] == DOOR) frontier.push_back(info{vi, vj, vnb});
+                else frontier.push_front(info{vi, vj, vnb});
+                nbs[vi][vj][i] = vnb;
             }
         }
     }
@@ -66,7 +63,7 @@ int main() {
         for (int i = 0; i <= H + 1; i++) {
             for (int j = 0; j <= W + 1; j++) {
                 for (int k = 0; k < 3; k++) {
-                    nbs[i][j][k] = INF;
+                    nbs[i][j][k] = -1;
                 }
             }
         }
