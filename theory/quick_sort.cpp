@@ -8,7 +8,7 @@
 #include <vector>
 
 using namespace std;
-const int MAX{50};
+const int MAX{1000000};
 const int N{100};
 
 void swap(int& x, int &y) {
@@ -46,7 +46,7 @@ int main() {
 
     cout << "unsorted: " << endl;
     for (auto e : arr) {
-        cout << e << " ";
+        //cout << e << " ";
     }
     cout << endl << endl;
 
@@ -54,7 +54,7 @@ int main() {
 
     cout << "sorted: " << endl;
     for (auto e : arr) {
-        cout << e << " ";
+       // cout << e << " ";
     }
     cout << endl;
 
