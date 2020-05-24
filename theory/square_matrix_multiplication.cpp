@@ -112,7 +112,6 @@ Matrix<int> multiply_stras(Matrix<int> A, Matrix<int> B) {
     Matrix<int> S9 = A11 - A21;
     Matrix<int> S10 = B11 + B12;
 
-
     Matrix<int> p1 = multiply_stras(A11, S1);
     Matrix<int> p2 = multiply_stras(S2, B22);
     Matrix<int> p3 = multiply_stras(S3, B11);

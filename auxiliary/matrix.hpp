@@ -87,7 +87,7 @@ public:
                 ret[r][c] = (*this)[r][c] + rhs[r][c];
             }
         }
-        return ret;
+        return std::move(ret);
     }
 
     Matrix operator-(const Matrix& rhs) {
@@ -98,7 +98,7 @@ public:
                 ret[r][c] = (*this)[r][c] - rhs[r][c];
             }
         }
-        return ret;
+        return std::move(ret);
     }
 
     int getRowSize() const { return rows; }
