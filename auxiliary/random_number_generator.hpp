@@ -1,3 +1,6 @@
+#ifndef ALGORITHM_RNG_HPP
+#define ALGORITHM_RNG_HPP
+
 #include <random>
 
 std::random_device rd;
@@ -13,3 +16,4 @@ T get_random_number(T lower_limit, T upper_limit) {
         return dist(gen);
     }
 }
+#endif //ALGORITHM_RNG_HPP
