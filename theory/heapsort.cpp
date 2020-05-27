@@ -8,41 +8,42 @@
 #include <heap_priority_queue.hpp>
 #include <vector>
 
-#define MAX_NUM 1000
+#define MAX_NUM 200
 
 using namespace std;
 
 int main() {
-
   cout << "Max heap example : \n\n";
 
-  Max_Heap<int, int> MaxHeap;
-  for (int i = 0; i < 20; i++) {
-    int rn = get_random_number(1, MAX_NUM - 1);
-    MaxHeap.insert(rn, rn);
+  vector<Container<double>> arr;
+  for (int i = 0; i < 50; i++) {
+      int rn = get_random_number(0, MAX_NUM);
+      arr.emplace_back(rn, rn);
   }
 
-  auto some_max = MaxHeap.get_max();
-  MaxHeap.update_key(some_max, 777);
-  while (!MaxHeap.is_empty()) {
-    auto cont = MaxHeap.extract_max();
-    cout << cont->key << endl;
+  Max_Heap<double> mh;
+  mh.Build_Max_Heap(arr);
+  mh.Heap_Increase_Key(30, 7777);
+  mh.Max_Heap_Insert(8888, 0.5);
+
+  int prev = -1;
+  int now;
+  bool pass{true};
+  while (!mh.is_empty()) {
+      auto container = mh.Heap_Extract_Max();
+      cout << container.key << " ";
+      if (prev == -1) {
+          prev = container.key;
+      } else {
+          now = container.key;
+          if (prev < now) {
+              pass = false;
+              break;
+          }
+      }
   }
+  cout << endl;
+  cout << "pass : " << pass << endl;
 
-
-  cout << "\n\nMin heap example :\n\n";
-  Min_Heap<int, int> MinHeap;
-  for (int i = 0; i < 20; i++) {
-    int rn = get_random_number(1, MAX_NUM - 1);
-    MinHeap.insert(rn, rn);
-  }
-
-  auto some_min = MinHeap.get_min();
-  MinHeap.update_key(some_min, 777);
-
-  while (!MinHeap.is_empty()) {
-    auto cont = MinHeap.extract_min();
-    cout << cont->key << endl;
-  }
   return 0;
 }

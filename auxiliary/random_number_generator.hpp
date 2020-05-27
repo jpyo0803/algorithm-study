@@ -2,9 +2,9 @@
 #define ALGORITHM_RNG_HPP
 
 #include <random>
+#include <ctime>
 
-std::random_device rd;
-std::mt19937 gen(rd());
+std::mt19937 gen((unsigned int)time(NULL));
 
 template<typename T>
 T get_random_number(T lower_limit, T upper_limit) {

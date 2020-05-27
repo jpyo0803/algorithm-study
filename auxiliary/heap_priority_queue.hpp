@@ -1,159 +1,85 @@
 /* heap based priority queue */
 
+#include <iostream>
 #include <vector>
 #include <memory>
-#include <iostream>
 
 using namespace std;
 
-int parent(int me) { return (me - 1) / 2; }
-int left_child(int me) { return me * 2 + 1; }
-int right_child(int me) { return me * 2 + 2; }
-
-template<typename KeyType, typename ObjectType>
+template<typename T>
 class Container {
 public:
-    Container(KeyType _key, ObjectType _obj, int _idx) : key(_key), obj(_obj), idx(_idx) {}; 
-    KeyType key;
-    ObjectType obj;
-    int idx;
+    Container() : key(-1) {}
+    Container(int _key, T _data) : key(_key), data(_data) {}
+    int key;
+    T data;
 };
 
-template<typename KeyType, typename ObjectType>
-void swap_container(shared_ptr<Container<KeyType, ObjectType>>& x, shared_ptr<Container<KeyType, ObjectType>>& y) {
-    int tmp_idx = x->idx;
-    x->idx = y->idx;
-    y->idx = tmp_idx;
-    std::swap(x, y);
-}
+inline int PARENT(int i) { return (i - 1) / 2; }
+inline int LEFT(int i) { return (i * 2) + 1; }
+inline int RIGHT(int i) { return (i * 2) + 2; }
 
-template<typename KeyType, typename ObjectType>
+const int NINF{-1000000000};
+
+template<typename T>
 class Max_Heap {
 public:
     Max_Heap() {};
-    ~Max_Heap() {};
-
-    void insert(KeyType key, ObjectType obj) {
-        auto tmp = make_shared<Container<KeyType, ObjectType>>(key, obj, arr.size());
-        arr.push_back(tmp);
-        max_order_key(arr.size() - 1);
-    }
-
-    shared_ptr<Container<KeyType, ObjectType>> extract_max() {
-        if (is_empty()) return nullptr;
-
-        swap_container(arr[0], arr[arr.size() - 1]);
-        auto ret = arr[arr.size() - 1];
-        arr.pop_back();
-        max_heapify(0); 
-
-        return ret;
-    }
-
-    shared_ptr<Container<KeyType, ObjectType>> get_max() {
-        if (is_empty()) return nullptr;
-        return arr[0];
-    }
-
-    void update_key(shared_ptr<Container<KeyType, ObjectType>> cont, KeyType new_key) {
-        cont->key = new_key;
-        max_order_key(cont->idx);
-        max_heapify(cont->idx);
-    }
-
-    bool is_empty() { return arr.size() == 0; }
-
-private:
-    void max_order_key(int i) {
-        int p = parent(i);
-        if (p < 0) return;
-
-        if (arr[i]->key > arr[p]->key) {
-            swap_container(arr[i], arr[p]);
-            max_order_key(p);
-        }
-    } 
-
-    void max_heapify(int i) {
-        int left = left_child(i);
-        int right = right_child(i);
-
+    void Max_Heapify(int i) {
+        int l = LEFT(i);
+        int r = RIGHT(i);
         int largest;
-        if (left < arr.size() && arr[left]->key > arr[i]->key) largest = left;
-        else largest = i;
-
-        if (right < arr.size() && arr[right]->key > arr[largest]->key) largest = right;
-
+        if (l < heap.size() && heap[i].key < heap[l].key) {
+            largest = l;
+        } else {
+            largest = i;
+        }
+        if (r < heap.size() && heap[largest].key < heap[r].key) {
+            largest = r;
+        }
         if (largest != i) {
-            swap_container(arr[i], arr[largest]);
-            max_heapify(largest);
+            swap(heap[i], heap[largest]);
+            Max_Heapify(largest);
         }
     }
-    vector<shared_ptr<Container<KeyType, ObjectType>>> arr;
-};
-
-
-template<typename KeyType, typename ObjectType>
-class Min_Heap {
-public:
-    Min_Heap() {};
-    ~Min_Heap() {};
-
-    void insert(KeyType key, ObjectType obj) {
-        auto tmp = make_shared<Container<KeyType, ObjectType>>(key, obj, arr.size());
-        arr.push_back(tmp);
-        min_order_key(arr.size() - 1);
+    void Build_Max_Heap(vector<Container<T>> &input_arr) {
+        heap = input_arr;
+        for (int i = (heap.size() / 2) - 1; i >= 0; i--) {
+            Max_Heapify(i);
+        }
     }
-
-    shared_ptr<Container<KeyType, ObjectType>> extract_min() {
-        if (is_empty()) return nullptr;
-
-        swap_container(arr[0], arr[arr.size() - 1]);
-        auto ret = arr[arr.size() - 1];
-        arr.pop_back();
-        min_heapify(0); 
-
+    Container<T> Heap_Extract_Max() {
+        Container<T> ret;
+        if (heap.size() == 0) {
+            return ret;
+        }
+        ret = heap[0];
+        heap[0] = heap[heap.size() - 1];
+        heap.pop_back();
+        Max_Heapify(0);
         return ret;
     }
-
-    shared_ptr<Container<KeyType, ObjectType>> get_min() {
-        if (is_empty()) return nullptr;
-        return arr[0];
+    void Heap_Increase_Key(int i, int new_key) {
+        if (new_key < heap[i].key) {
+            return;
+        }
+        heap[i].key = new_key;
+        int p = PARENT(i);
+        while (i > 0 && heap[PARENT(i)].key < heap[i].key) {
+            swap(heap[i], heap[PARENT(i)]);
+            i = PARENT(i);
+        }
+    }
+    void Max_Heap_Insert(int key, T data) {
+        heap.emplace_back(NINF, data);
+        Heap_Increase_Key(heap.size() - 1, key);
     }
 
-    void update_key(shared_ptr<Container<KeyType, ObjectType>> cont, KeyType new_key) {
-        cont->key = new_key;
-        min_order_key(cont->idx);
-        min_heapify(cont->idx);
+    bool is_empty() {
+        return heap.size() == 0;
     }
-
-    bool is_empty() { return arr.size() == 0; }
+    Container<T> Heap_Maximum() { return heap[0]; }
 
 private:
-    void min_order_key(int i) {
-        int p = parent(i);
-        if (p < 0) return;
-
-        if (arr[i]->key < arr[p]->key) {
-            swap_container(arr[i], arr[p]);
-            min_order_key(p);
-        }
-    } 
-
-    void min_heapify(int i) {
-        int left = left_child(i);
-        int right = right_child(i);
-
-        int smallest;
-        if (left < arr.size() && arr[left]->key < arr[i]->key) smallest = left;
-        else smallest = i;
-
-        if (right < arr.size() && arr[right]->key < arr[smallest]->key) smallest = right;
-
-        if (smallest != i) {
-            swap_container(arr[i], arr[smallest]);
-            min_heapify(smallest);
-        }
-    }
-    vector<shared_ptr<Container<KeyType, ObjectType>>> arr;
+    vector<Container<T>> heap;
 };
