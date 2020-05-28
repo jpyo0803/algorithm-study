@@ -1,5 +1,5 @@
 //
-// Quick Sort(very basic form)
+// Quick Sort(very basic form), Randomized Partition
 // O(nlogn), but O(n^2) if order is reversed
 //
 
@@ -8,7 +8,7 @@
 #include <vector>
 
 using namespace std;
-const int MAX{1000000};
+const int MAX{30};
 const int N{100};
 
 void swap(int& x, int &y) {
@@ -30,9 +30,15 @@ int partition(vector<int>& arr, int l, int r) {
     return i;
 }
 
+int randomized_partition(vector<int>& arr, int l, int r) {
+    int rn = get_random_number(l, r);
+    swap(arr[rn], arr[r]);
+    return partition(arr, l, r);
+}
+
 void quick_sort(vector<int>& arr, int l, int r) {
     if (l < r) {
-        int pivot = partition(arr, l, r);
+        int pivot = randomized_partition(arr, l, r);
         quick_sort(arr, l, pivot - 1);
         quick_sort(arr, pivot + 1, r);
     }
@@ -46,7 +52,7 @@ int main() {
 
     cout << "unsorted: " << endl;
     for (auto e : arr) {
-        //cout << e << " ";
+        cout << e << " ";
     }
     cout << endl << endl;
 
@@ -54,9 +60,9 @@ int main() {
 
     cout << "sorted: " << endl;
     for (auto e : arr) {
-       // cout << e << " ";
+        cout << e << " ";
     }
     cout << endl;
-
+    return 0;
 }
 
