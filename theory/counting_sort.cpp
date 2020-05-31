@@ -5,42 +5,45 @@
   it becomes worse than the comparison based sorting algorithms
 */
 
-#include <cstdlib>
-#include <ctime>
 #include <iostream>
 #include <vector>
-#include <cstring>
+#include <random_number_generator.hpp>
 
 using namespace std;
 
-int n = 20;
-vector<int> arr;
+const int N{50};
+const int K{30};
+int unsorted[N];
+int sorted[N];
+
+int temp[K];
 
 int main() {
-  srand((unsigned int)time(NULL));
-
-  int k = 0;
-  for (int i = 0; i < n; i++) {
-    int num = rand() % 100;
-    if (k < num) k = num;
-    arr.push_back(num);
-  }
-
-  int* count = new int[k+1];
-  memset(count, 0x00, sizeof(int)*(k+1));
-
-  for (int i = 0; i < arr.size(); i++) {
-    count[arr[i]] += 1;
-  }
-
-  for (int i = 0; i <= k; i++) {
-    while (count[i] != 0) {
-      cout << i << " ";
-      count[i]--;
+    cout << "Unsorted: ";
+    for (int i = 0; i < N; i++) {
+        unsorted[i] = get_random_number(0, K - 1);
+        cout << unsorted[i] << " ";
     }
-  }
-  cout << endl;
+    cout << endl;
 
-  delete[] count;
-  return 0;
+    for (int i = 0; i < N; i++) {
+        temp[unsorted[i]] += 1;
+    }
+
+    for (int i = 1; i < K; i++) {
+        temp[i] += temp[i - 1];
+    }
+
+    for (int j = N - 1; j >= 0; j--) {
+        sorted[temp[unsorted[j]]] = unsorted[j];
+        temp[unsorted[j]] -= 1;
+    }
+
+    cout << "Sorted: ";
+    for (int i = 0; i < N; i++) {
+        cout << sorted[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
 }
