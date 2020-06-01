@@ -27,12 +27,12 @@ int bfs(int n, int k) {
                 dq.emplace_front(v, u.second);
             }
             v = u.first + 1;
-            if (v >= 0 && u.second <= level[v]) {
+            if (v <= MAX && u.second <= level[v]) {
                 level[v] = u.second;
                 dq.emplace_back(v, u.second + 1);
             }
             v = u.first - 1;
-            if (v <= MAX && u.second <= level[v]) {
+            if (v >= 0 && u.second <= level[v]) {
                 level[v] = u.second;
                 dq.emplace_back(v, u.second + 1);
             }
