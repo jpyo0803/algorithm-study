@@ -8,7 +8,7 @@ int main() {
     BinarySearchTree<int> bst;
 
     for (int i = 0; i < 30; i++) {
-        int rn = get_random_number<int>(0, 100);
+        int rn = get_random_number<int>(0, 50);
         BinaryTreeNode<int>* tmp = new BinaryTreeNode<int>(rn);
         bst.TreeInsert(tmp);
     }
@@ -32,6 +32,20 @@ int main() {
     } else {
         cout << "not found" << endl;
     }
+
+    auto foundNode2 = bst.TreeSearch(1);
+    if (foundNode2 != nullptr) {
+        bst.TreeDelete(foundNode2);
+    }
+
+    auto foundNode3 = bst.TreeSearch(5);
+    if (foundNode3 != nullptr) {
+        bst.TreeDelete(foundNode3);
+    }
+
+    cout << "Inorder Traveral : ";
+    bst.InOrderTreeWalk();
+    cout << endl;
 
     return 0;
 }

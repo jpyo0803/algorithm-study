@@ -37,6 +37,27 @@ public:
         }
     }
 
+    void TreeDelete(BinaryTreeNode<T> *z) {
+        if (z->left_child_ == nullptr) {
+            Transplant(z, z->right_child_);
+        } else if (z->right_child_ == nullptr) {
+            Transplant(z, z->left_child_);
+        } else {
+            auto y = TreeMinimum(z->right_child_);
+            if (y->parent_ != z) {
+                Transplant(y, y->right_child_);
+                y->right_child_ = z->right_child_;
+                y->right_child_->parent_ = y;
+            }
+            Transplant(z, y);
+            y->left_child_ = z->left_child_;
+            y->left_child_->parent_ = y;
+        }
+        if (z != nullptr) {
+            delete z;
+        }
+    }
+
     BinaryTreeNode<T> *TreeSearch(T key) {
         return TreeSearchRecursive(root_node_, key);
     }
@@ -143,6 +164,19 @@ private:
             PostOrderTreeWalkRecursive(current_node->left_child_);
             PostOrderTreeWalkRecursive(current_node->right_child_);
             std::cout << current_node->key_ << " ";
+        }
+    }
+
+    void Transplant(BinaryTreeNode<T> *u, BinaryTreeNode<T> *v) {
+        if (u->parent_ == nullptr) {
+            root_node_ = v;
+        } else if (u->parent_->left_child_ == u) {
+            u->parent_->left_child_ = v;
+        } else {
+            u->parent_->right_child_ = v;
+        }
+        if (v != nullptr) {
+            v->parent_ = u->parent_;
         }
     }
 
