@@ -2,9 +2,9 @@ kind: pipeline
 name: default
 
 steps:
-- name: build_test
-   image: jpyo0803/ubuntu_1804_basic
-   commands:
-   - mkdir -p build && cd build
-   - cmake ..
-   - make -j
+- name: build
+  image: jpyo0803/ubuntu_1804_basic:0.1
+  commands:
+  - mkdir -p build && cd build
+  - cmake ..
+  - make -j
