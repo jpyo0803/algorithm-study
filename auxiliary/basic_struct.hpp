@@ -8,12 +8,14 @@
 namespace ds { // data structure
     template<typename T>
     struct BinaryTreeNode {
-        BinaryTreeNode(T key) : key_{key}, parent_{nullptr}, left_child_{nullptr}, right_child_{nullptr} {}
+        BinaryTreeNode(T key) : key_{key} {}
 
         T key_;
-        BinaryTreeNode *parent_;
-        BinaryTreeNode *left_child_;
-        BinaryTreeNode *right_child_;
+        BinaryTreeNode *parent_{nullptr};
+        BinaryTreeNode *left_child_{nullptr};
+        BinaryTreeNode *right_child_{nullptr};
+
+        int height_{0};
     };
 }
 

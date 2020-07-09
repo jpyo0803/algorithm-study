@@ -14,7 +14,7 @@ using ds::BinaryTreeNode;
 template<typename T>
 class BinarySearchTree {
 public:
-    void TreeInsert(BinaryTreeNode<T> *new_node) {
+    virtual void TreeInsert(BinaryTreeNode<T> *new_node) {
         BinaryTreeNode<T> *current_node = root_node_;
         BinaryTreeNode<T> *previous_node = nullptr;
 
@@ -180,6 +180,7 @@ private:
         }
     }
 
+ protected:
     BinaryTreeNode<T> *root_node_{nullptr};
 };
 
