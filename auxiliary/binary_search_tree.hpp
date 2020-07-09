@@ -64,13 +64,16 @@ public:
 
     BinaryTreeNode<T> *IterativeTreeSearch(T key) {
         BinaryTreeNode<T> *current_node = root_node_;
+        int depth = 0;
         while (current_node != nullptr && current_node->key_ != key) {
             if (key < current_node->key_) {
                 current_node = current_node->left_child_;
             } else {
                 current_node = current_node->right_child_;
             }
+            depth += 1;
         }
+        std::cout << "Search depth : " << depth << std::endl;
         return current_node;
     }
 
