@@ -11,7 +11,7 @@ class Solution {
     int n = haystack.length();
     int m = needle.length();
 
-    vector<int> pi(n, 0);
+    vector<int> pi(m, 0);
 
     int begin = 1, matched = 0;
 
