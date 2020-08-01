@@ -56,6 +56,7 @@ int main() {
         flag = true;
         job_done_count++;
         K--;
+        break;
       }
     }
   }
