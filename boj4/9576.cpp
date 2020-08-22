@@ -1,6 +1,6 @@
 //
 // Book Handout
-// Link: https:  // www.acmicpc.net/problem/9576
+// Link: https:www.acmicpc.net/problem/9576
 //
 
 #include <array>
