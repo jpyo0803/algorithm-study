@@ -1,6 +1,6 @@
 //
 // 축사 배정
-// Link: https:  // www.acmicpc.net/problem/2188
+// Link: https://www.acmicpc.net/problem/2188
 //
 
 #include <cstdio>
