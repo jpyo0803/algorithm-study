@@ -3,9 +3,9 @@
 // Problem: https://algospot.com/judge/problem/read/PI
 //
 
+#include <cmath>
 #include <cstdio>
 #include <cstring>
-#include <cmath>
 
 constexpr int INF = 987654321;
 
@@ -71,12 +71,18 @@ int PI(int x) {
   ret = INF;
   for (int i = 3; i <= 5; i++) {
     int difficulty = 10;
-    if (IsSame(x, i)) difficulty = 1;
-    else if (IsDifferByOne(x, i)) difficulty = 2;
-    else if (IsAlternating(x, i)) difficulty = 4;
-    else if (IsArithmeticProgression(x, i)) difficulty = 5;
-    if (x + i == length) ret = Min(ret, difficulty);
-    else ret = Min(ret, PI(x + i) + difficulty);
+    if (IsSame(x, i))
+      difficulty = 1;
+    else if (IsDifferByOne(x, i))
+      difficulty = 2;
+    else if (IsAlternating(x, i))
+      difficulty = 4;
+    else if (IsArithmeticProgression(x, i))
+      difficulty = 5;
+    if (x + i == length)
+      ret = Min(ret, difficulty);
+    else
+      ret = Min(ret, PI(x + i) + difficulty);
   }
   return ret;
 }

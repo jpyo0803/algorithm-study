@@ -15,7 +15,7 @@ using namespace std;
 int N, M, S, E, u, v, w;
 
 vector<pair<int, int>> adj[kMaxV + 1];
-int Dijkstra(int s, int e) { 
+int Dijkstra(int s, int e) {
   vector<int> dist(N + 1, INF);
   dist[s] = 0;
 

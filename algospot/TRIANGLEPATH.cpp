@@ -34,7 +34,7 @@ int main() {
     memset(cache, -1, sizeof(cache));
     for (int i = 0; i < N; i++) {
       for (int j = 0; j <= i; j++) {
-        scanf("%d", &arr[i][j]); 
+        scanf("%d", &arr[i][j]);
       }
     }
 

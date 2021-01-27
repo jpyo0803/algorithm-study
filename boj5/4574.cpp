@@ -51,7 +51,7 @@ void BackTracking() {
     }
     if (r != -1) break;
   }
-  
+
   if (r == -1) {
     printf("Puzzle %d\n", question_number++);
     for (int i = 0; i < 9; i++) {

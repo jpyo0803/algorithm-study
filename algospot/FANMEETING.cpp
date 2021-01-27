@@ -3,17 +3,17 @@
 // Link: https://www.algospot.com/judge/problem/read/FANMEETING
 //
 
-#include <cstdio>
-#include <vector>
 #include <algorithm>
+#include <cstdio>
 #include <cstring>
+#include <vector>
 
 using namespace std;
 
 int C;
 char input[200001];
 
-void AddTo(vector<int>& a, const vector<int>& b, int k) { // a += b * 10^k
+void AddTo(vector<int>& a, const vector<int>& b, int k) {  // a += b * 10^k
   a.resize(max<int>(a.size(), b.size()) + k, 0);
   for (int i = 0; i < b.size(); i++) a[i + k] += b[i];
 }
@@ -33,9 +33,10 @@ vector<int> Multiply(const vector<int>& a, const vector<int>& b) {
 }
 
 vector<int> Karatsuba(const vector<int>& a, const vector<int>& b) {
-  if (a.size() < b.size()) return Karatsuba(b, a); // To keep size of a > size of b
+  if (a.size() < b.size())
+    return Karatsuba(b, a);  // To keep size of a > size of b
   if (a.size() == 0 || b.size() == 0) return vector<int>();
-  if (a.size() < 50) return Multiply(a, b); // base case
+  if (a.size() < 50) return Multiply(a, b);  // base case
 
   int half = a.size() / 2;
   vector<int> a0(a.begin(), a.begin() + half);

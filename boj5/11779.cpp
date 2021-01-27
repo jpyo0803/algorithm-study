@@ -7,7 +7,6 @@
 #include <queue>
 #include <vector>
 
-
 using namespace std;
 
 constexpr int kMaxN = 1000;
@@ -23,7 +22,7 @@ void PrintPath(int current, int depth) {
     printf("%d\n", depth);
     printf("%d ", S);
     return;
-  } 
+  }
 
   PrintPath(p[current], depth + 1);
   printf("%d ", current);

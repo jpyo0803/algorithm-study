@@ -3,8 +3,8 @@
 // Link: https://www.acmicpc.net/problem/10610
 //
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 

@@ -3,10 +3,10 @@
 // Link: https://www.algospot.com/judge/problem/read/DICTIONARY
 //
 
-#include <iostream>
-#include <vector>
-#include <string>
 #include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -78,7 +78,7 @@ int main() {
       cout << "INVALID HYPOTHESIS" << endl;
     } else {
       for (auto rev_it = answers.rbegin(); rev_it != answers.rend(); rev_it++) {
-        cout << *rev_it; 
+        cout << *rev_it;
       }
       cout << endl;
     }

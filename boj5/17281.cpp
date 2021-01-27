@@ -6,7 +6,6 @@
 #include <cassert>
 #include <cstdio>
 
-
 int Max(int x, int y) { return x > y ? x : y; }
 
 int N;

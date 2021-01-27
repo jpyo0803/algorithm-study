@@ -16,7 +16,9 @@ int main() {
       min = (x < min ? x : min);
     }
   }
-  if (min == 987654321) printf("-1\n");
-  else printf("%d\n%d\n", sum, min);
+  if (min == 987654321)
+    printf("-1\n");
+  else
+    printf("%d\n%d\n", sum, min);
   return 0;
 }

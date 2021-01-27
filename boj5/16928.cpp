@@ -48,7 +48,7 @@ int BFS(int start, int end) {
     }
     swap(frontier, next);
   }
-  return -1; // should not reach
+  return -1;  // should not reach
 }
 
 int main() {

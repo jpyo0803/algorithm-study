@@ -26,10 +26,16 @@ int Solve() {
           memset(pc, 0, sizeof(pc));
           for (int r = 1; r <= N; r++) {
             for (int c = 1; c <= N; c++) {
-              if (r < x + d1 && c <= y && r < x + y - c) pc[0] += A[r][c];
-              else if (r <= x + d2 && c > y && c > y - x + r) pc[1] += A[r][c];
-              else if (r >= x + d1 && c < y - d1 + d2 && c < y + r - x - (2 * d1)) pc[2] += A[r][c];
-              else if (r > x + d2 && y - d1 + d2 <= c && r > x - c + y + (2 * d2)) pc[3] += A[r][c];
+              if (r < x + d1 && c <= y && r < x + y - c)
+                pc[0] += A[r][c];
+              else if (r <= x + d2 && c > y && c > y - x + r)
+                pc[1] += A[r][c];
+              else if (r >= x + d1 && c < y - d1 + d2 &&
+                       c < y + r - x - (2 * d1))
+                pc[2] += A[r][c];
+              else if (r > x + d2 && y - d1 + d2 <= c &&
+                       r > x - c + y + (2 * d2))
+                pc[3] += A[r][c];
             }
           }
           pc[4] = tc - (pc[0] + pc[1] + pc[2] + pc[3]);
