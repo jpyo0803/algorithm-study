@@ -11,20 +11,20 @@ int hr, minute;
 int elasped_min;
 
 int main() {
-	cin >> hr >> minute >> elasped_min;
-	
-	int comp_hr = elasped_min / 60;
-	int comp_min = elasped_min % 60;
+  cin >> hr >> minute >> elasped_min;
 
-	hr += comp_hr;
-	minute += comp_min;
+  int comp_hr = elasped_min / 60;
+  int comp_min = elasped_min % 60;
 
-	if (minute > 59) {
-		hr += 1;
-		minute %= 60;
-	}
+  hr += comp_hr;
+  minute += comp_min;
 
-	hr %= 24;
-	cout << hr << " " << minute << endl;
-	return 0;
+  if (minute > 59) {
+    hr += 1;
+    minute %= 60;
+  }
+
+  hr %= 24;
+  cout << hr << " " << minute << endl;
+  return 0;
 }
