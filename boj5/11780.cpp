@@ -21,7 +21,7 @@ void FloydWarshall() {
         int new_dist = adj[i][k] + adj[k][j];
         if (new_dist < adj[i][j]) {
           adj[i][j] = new_dist;
-					via[i][j] = k;
+          via[i][j] = k;
         }
       }
     }
@@ -29,15 +29,15 @@ void FloydWarshall() {
 }
 
 void Reconstruct(int u, int v, vector<int>& path) {
-	if (via[u][v] == -1) {
-		path.push_back(u);
-		if (u != v) path.push_back(v);
-	} else {
-		int w = via[u][v];
-		Reconstruct(u, w, path);
-		path.pop_back();
-		Reconstruct(w, v, path);
-	}
+  if (via[u][v] == -1) {
+    path.push_back(u);
+    if (u != v) path.push_back(v);
+  } else {
+    int w = via[u][v];
+    Reconstruct(u, w, path);
+    path.pop_back();
+    Reconstruct(w, v, path);
+  }
 }
 
 int main() {
@@ -46,7 +46,7 @@ int main() {
   for (int i = 1; i <= N; i++) {
     for (int j = 1; j <= N; j++) {
       if (i != j) adj[i][j] = INF;
-			via[i][j] = -1;
+      via[i][j] = -1;
     }
   }
 
@@ -57,27 +57,28 @@ int main() {
   }
 
   FloydWarshall();
-	
-	for (int i = 1; i <= N; i++) {
-		for (int j = 1; j <= N; j++) {
-			printf("%d ", adj[i][j]);
-		}
-		printf("\n");
-	}
-	for (int i = 1; i <= N; i++) {
-		for (int j = 1; j <= N; j++) {
-			vector<int> path;
-			Reconstruct(i, j, path);
-			if (path.size() < 2) printf("0\n");			
-			else {	
-				printf("%d ", path.size());		
-				for (auto e : path) {
-					printf("%d ", e);
-				}
-				printf("\n");
-			}
-		}
-	}
+
+  for (int i = 1; i <= N; i++) {
+    for (int j = 1; j <= N; j++) {
+      printf("%d ", adj[i][j]);
+    }
+    printf("\n");
+  }
+  for (int i = 1; i <= N; i++) {
+    for (int j = 1; j <= N; j++) {
+      vector<int> path;
+      Reconstruct(i, j, path);
+      if (path.size() < 2)
+        printf("0\n");
+      else {
+        printf("%d ", path.size());
+        for (auto e : path) {
+          printf("%d ", e);
+        }
+        printf("\n");
+      }
+    }
+  }
 
   return 0;
 }
