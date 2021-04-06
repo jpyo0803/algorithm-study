@@ -1,3 +1,8 @@
+//
+// King
+// Link: https://www.acmicpc.net/problem/1063
+//
+
 #include <iostream>
 
 using namespace std;
