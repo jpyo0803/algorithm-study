@@ -2,8 +2,9 @@
 // https://www.acmicpc.net/problem/2586
 
 #include <stdio.h>
-#include <vector>
+
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
