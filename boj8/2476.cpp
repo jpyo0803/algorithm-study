@@ -15,7 +15,7 @@ int main() {
     scanf("%d%d%d", &x, &y, &z);
     int local_ans = 0;
     if (x == y && y == z) {
-      local_ans = 10000 + x * 1000; 
+      local_ans = 10000 + x * 1000;
     } else if (x != y && y != z && x != z) {
       local_ans = Max(x, Max(y, z)) * 100;
     } else {
