@@ -2,6 +2,7 @@
 // https://www.acmicpc.net/problem/11438
 
 #include <stdio.h>
+
 #include <vector>
 
 using namespace std;
