@@ -3,7 +3,8 @@ project(algorithm_study)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# include_directories(auxiliary)
+include_directories(.)
+
 # add_subdirectory(boj)
 # add_subdirectory(boj2)
 # add_subdirectory(boj3)
