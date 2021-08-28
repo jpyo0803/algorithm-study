@@ -75,8 +75,10 @@ int DFS(Board now, int nth) {
     }
 
     if (!res2) {
-      if (res1) return nth;
-      else ret = Min(ret, DFS(next, nth + 1));
+      if (res1)
+        return nth;
+      else
+        ret = Min(ret, DFS(next, nth + 1));
     }
     now.R90();
   }

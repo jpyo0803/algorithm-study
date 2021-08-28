@@ -3,8 +3,8 @@
 // Link: https://www.acmicpc.net/problem/1051
 //
 
-#include <cstdio>
 #include <cstdint>
+#include <cstdio>
 
 constexpr int8_t kMax = 50;
 
@@ -19,7 +19,7 @@ void Solve(int8_t edge_length) {
       if (field[r + edge_length][c] == field[r][c] &&
           field[r][c + edge_length] == field[r][c] &&
           field[r + edge_length][c + edge_length] == field[r][c]) {
-        ans =  (edge_length + 1) * (edge_length + 1);
+        ans = (edge_length + 1) * (edge_length + 1);
         return;
       }
     }

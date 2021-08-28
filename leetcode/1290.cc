@@ -1,6 +1,7 @@
 //
 // 1290. Convert Binary Number in a Linked List to Integer
-// Problem: https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
+// Problem:
+// https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
 //
 
 /**
@@ -14,20 +15,20 @@
  * };
  */
 class Solution {
-public:
-    int getDecimalValue(ListNode* head) {
-        vector<bool> bins;
-        ListNode* curr = head;
-        while (curr != nullptr) {
-            bins.push_back(curr->val);
-            curr = curr->next;
-        }
-        int mult = 1;
-        int ans = 0;
-        for (auto it = bins.rbegin(); it != bins.rend(); it++) {
-            ans += (*it) * mult;
-            mult *= 2;
-        }
-        return ans;
+ public:
+  int getDecimalValue(ListNode* head) {
+    vector<bool> bins;
+    ListNode* curr = head;
+    while (curr != nullptr) {
+      bins.push_back(curr->val);
+      curr = curr->next;
     }
+    int mult = 1;
+    int ans = 0;
+    for (auto it = bins.rbegin(); it != bins.rend(); it++) {
+      ans += (*it) * mult;
+      mult *= 2;
+    }
+    return ans;
+  }
 };

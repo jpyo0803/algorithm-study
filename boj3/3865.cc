@@ -4,10 +4,10 @@
 //
 
 #include <iostream>
-#include <vector>
+#include <memory>
 #include <unordered_map>
 #include <unordered_set>
-#include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -15,7 +15,7 @@ int N;
 string line;
 
 struct Node {
-  Node(string &name) : group_name(name) {}
+  Node(string& name) : group_name(name) {}
   string group_name;
   vector<std::shared_ptr<Node>> children;
 };

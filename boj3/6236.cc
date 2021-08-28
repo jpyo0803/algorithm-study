@@ -52,4 +52,3 @@ int main() {
   printf("%d", K);
   return 0;
 }
-

@@ -36,8 +36,10 @@ int main() {
   while (true) {
     int trinum = i * (i + 1) / 2;
     i++;
-    if (trinum <= 1000) trinums.push_back(trinum);
-    else break;
+    if (trinum <= 1000)
+      trinums.push_back(trinum);
+    else
+      break;
   }
   scanf("%d", &T);
   for (int t = 0; t < T; t++) {

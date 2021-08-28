@@ -8,6 +8,8 @@ int N;
 
 int main() {
   scanf("%d", &N);
-  if (N % 2) printf("SK\n");
-  else printf("CY\n");
+  if (N % 2)
+    printf("SK\n");
+  else
+    printf("CY\n");
 }

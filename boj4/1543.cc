@@ -29,8 +29,8 @@ int main() {
     if (is_match) {
       match_count++;
       idx += len_word;
-    }
-    else idx++;
+    } else
+      idx++;
   }
   printf("%d\n", match_count);
 

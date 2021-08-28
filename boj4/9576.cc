@@ -6,7 +6,6 @@
 #include <array>
 #include <cstdio>
 
-
 constexpr int kMaxSize = 1000;
 using namespace std;
 
@@ -19,7 +18,8 @@ bool DFS(int student) {
   if (visited[student]) return false;
   visited[student] = true;
 
-  for (int book = s_to_b[student].first; book <= s_to_b[student].second; book++) {
+  for (int book = s_to_b[student].first; book <= s_to_b[student].second;
+       book++) {
     if (matched_to[book] == -1 || DFS(matched_to[book])) {
       matched_to[book] = student;
       return true;

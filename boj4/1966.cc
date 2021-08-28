@@ -22,7 +22,8 @@ int main() {
 
     int nth = 1;
     while (true) {
-      auto first_document = documents.front(); documents.pop_front();
+      auto first_document = documents.front();
+      documents.pop_front();
       bool pass = true;
       for (auto& other : documents) {
         if (first_document.second < other.second) {

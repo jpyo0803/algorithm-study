@@ -41,8 +41,8 @@ int main() {
 
   int job_done_count = 0;
   for (int i = 1; i <= N && K > 0; i++) {
-      for (int j = 1; j <= N; j++) visited[j] = false;
-      if (DFS(i)) job_done_count++;
+    for (int j = 1; j <= N; j++) visited[j] = false;
+    if (DFS(i)) job_done_count++;
   }
 
   for (int i = 1; i <= N && K > 0; i++) {

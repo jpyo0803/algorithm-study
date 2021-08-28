@@ -14,7 +14,8 @@ int main() {
   count = 0;
   while (true) {
     scanf("%d", &x);
-    if (x == -1) break;
+    if (x == -1)
+      break;
     else if (x == 0) {
       for (int i = 0; i < 100; i++) freq[i] = false;
       printf("%d\n", count);

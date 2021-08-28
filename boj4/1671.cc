@@ -30,7 +30,7 @@ bool DFS(int current_shark) {
   if (visited[current_shark]) return false;
   visited[current_shark] = true;
 
-  for (auto &prey : sharks[current_shark].preys) {
+  for (auto& prey : sharks[current_shark].preys) {
     if (eaten_by[prey] == -1 || DFS(eaten_by[prey])) {
       eaten_by[prey] = current_shark;
       return true;

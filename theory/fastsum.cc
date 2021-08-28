@@ -1,5 +1,5 @@
-#include <iostream>
 #include <fast_sum.hpp>
+#include <iostream>
 
 int main() {
   std::cout << FastSum(101) << std::endl;

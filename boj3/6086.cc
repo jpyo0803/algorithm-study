@@ -26,10 +26,12 @@ int Ford_Fulkerson(int source, int sink) {
     queue<int> que;
     que.push(source);
     while (!que.empty() && parent[sink] == -1) {
-      int here = que.front(); que.pop();
+      int here = que.front();
+      que.pop();
 
       for (int there = 0; there < kMaxSize; there++) {
-        if (capacity[here][there] - flow[here][there] > 0 && parent[there] == -1) {
+        if (capacity[here][there] - flow[here][there] > 0 &&
+            parent[there] == -1) {
           parent[there] = here;
           que.push(there);
         }
@@ -58,10 +60,14 @@ int main() {
   for (int i = 0; i < N; i++) {
     scanf(" %c %c %d", &a, &b, &F);
     int na, nb;
-    if (a >= 'A' && a <= 'Z') na = a - 'A';
-    else na = a - 'a' + 26;
-    if (b >= 'A' && b <= 'Z') nb = b - 'A';
-    else nb = b - 'a' + 26;
+    if (a >= 'A' && a <= 'Z')
+      na = a - 'A';
+    else
+      na = a - 'a' + 26;
+    if (b >= 'A' && b <= 'Z')
+      nb = b - 'A';
+    else
+      nb = b - 'a' + 26;
     capacity[na][nb] += F;
     capacity[nb][na] += F;
   }
@@ -69,4 +75,3 @@ int main() {
   printf("%d\n", Ford_Fulkerson('A' - 'A', 'Z' - 'A'));
   return 0;
 }
-

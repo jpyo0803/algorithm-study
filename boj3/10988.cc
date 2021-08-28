@@ -17,8 +17,9 @@ int main() {
       break;
     }
   }
-  if (is_palindrome) cout << 1 << endl;
-  else cout << 0 << endl;
+  if (is_palindrome)
+    cout << 1 << endl;
+  else
+    cout << 0 << endl;
   return 0;
 }
-

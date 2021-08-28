@@ -62,7 +62,7 @@ int main() {
 
   int ans = 0;
   for (int i = 0; i < L; i++) {
-    for (int j = 0; j < W ;j++) {
+    for (int j = 0; j < W; j++) {
       if (map[i][j]) {
         int ret = BFS(i, j);
         ans = ans < ret ? ret : ans;

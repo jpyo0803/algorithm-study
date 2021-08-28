@@ -37,19 +37,19 @@ int CountMax(Board& b, int r, int c, int dir) {
   int tc = dir ? 0 : c;
 
   while (InRange(tr, tc)) {
-      if (prev_char != b.m[tr][tc]) {
-        local_max = Max(local_max, count);
-        count = 1;
-        prev_char = b.m[tr][tc];
-      } else {
-        count++;
-      }
-      tr += d[(dir + 1) % 2][0];
-      tc += d[(dir + 1) % 2][1];
+    if (prev_char != b.m[tr][tc]) {
+      local_max = Max(local_max, count);
+      count = 1;
+      prev_char = b.m[tr][tc];
+    } else {
+      count++;
+    }
+    tr += d[(dir + 1) % 2][0];
+    tc += d[(dir + 1) % 2][1];
   }
   local_max = Max(local_max, count);
   return local_max;
- }
+}
 
 int Check(Board b, int r, int c) {
   int local_max = 0;

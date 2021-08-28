@@ -58,7 +58,8 @@ int Simulate(vector<int>& archers) {
           int dist = GetDistance(ar, ac, er, ec);
           if (dist > D) continue;
           if (dist > targets[i].second) continue;
-          if (dist == targets[i].second && ec >= targets[i].first.second) continue;
+          if (dist == targets[i].second && ec >= targets[i].first.second)
+            continue;
           targets[i].second = dist;
           targets[i].first.first = er;
           targets[i].first.second = ec;

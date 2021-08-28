@@ -6,13 +6,13 @@
 #include <cstdio>
 int T, N, M, a, b;
 int main() {
-    scanf("%d", &T);
-    for (int tc = 0; tc < T; tc++) {
-        scanf("%d%d", &N, &M);
-        for (int i = 0; i < M; i++) {
-            scanf("%d%d", &a, &b);
-        }
-        printf("%d\n", N - 1);
+  scanf("%d", &T);
+  for (int tc = 0; tc < T; tc++) {
+    scanf("%d%d", &N, &M);
+    for (int i = 0; i < M; i++) {
+      scanf("%d%d", &a, &b);
     }
-    return 0;
+    printf("%d\n", N - 1);
+  }
+  return 0;
 }

@@ -3,8 +3,8 @@
 // Problem: https://www.acmicpc.net/problem/2110
 //
 
-#include <cstdio>
 #include <algorithm>
+#include <cstdio>
 
 using namespace std;
 constexpr int MAX = 200000;
@@ -51,4 +51,3 @@ int main() {
   printf("%d", ans);
   return 0;
 }
-

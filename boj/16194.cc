@@ -4,7 +4,7 @@
 //
 
 #include <iostream>
-#define MODE 1 // 0 = Memoization, 1 = Tabulation
+#define MODE 1  // 0 = Memoization, 1 = Tabulation
 
 using namespace std;
 const int MAX_SIZE{1000};
@@ -16,39 +16,39 @@ int dp[MAX_SIZE + 1];
 #if (MODE == 0)
 bool filled[MAX_SIZE + 1];
 int memo_method(int i) {
-    if (i == 0) return 0;
-    if (filled[i]) return dp[i];
+  if (i == 0) return 0;
+  if (filled[i]) return dp[i];
 
-    dp[i] = p[i];
-    for (int j = 1; j <= i / 2; j++) {
-        dp[i] = min(dp[i], memo_method(j) + memo_method(i - j));
-    }
-    filled[i] = true;
-    return dp[i];
+  dp[i] = p[i];
+  for (int j = 1; j <= i / 2; j++) {
+    dp[i] = min(dp[i], memo_method(j) + memo_method(i - j));
+  }
+  filled[i] = true;
+  return dp[i];
 }
 #else
 int tabulate_method(int n) {
-    dp[1] = p[1];
+  dp[1] = p[1];
 
-    for (int i = 2; i <= n; i++) {
-        dp[i] = p[i];
-        for (int j = 1; j <= i / 2; j++) {
-            dp[i] = min(dp[i], dp[j] + dp[i - j]);
-        }
+  for (int i = 2; i <= n; i++) {
+    dp[i] = p[i];
+    for (int j = 1; j <= i / 2; j++) {
+      dp[i] = min(dp[i], dp[j] + dp[i - j]);
     }
-    return dp[n];
+  }
+  return dp[n];
 }
 #endif
 
 int main() {
-    cin >> N;
-    for (int i = 1; i <= N; i++) {
-        cin >> p[i];
-    }
+  cin >> N;
+  for (int i = 1; i <= N; i++) {
+    cin >> p[i];
+  }
 #if (MODE == 0)
-    cout << memo_method(N);
+  cout << memo_method(N);
 #else
-    cout << tabulate_method(N);
+  cout << tabulate_method(N);
 #endif
-    return 0;
+  return 0;
 }

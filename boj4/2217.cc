@@ -3,8 +3,8 @@
 // Link: https://www.acmicpc.net/problem/2217
 //
 
-#include <cstdio>
 #include <algorithm>
+#include <cstdio>
 
 using namespace std;
 

@@ -14,7 +14,7 @@ typedef bool Color;
 using namespace std;
 
 struct Node {
-  Node(const string &x) : key(x) {
+  Node(const string& x) : key(x) {
     parent = left = right = nullptr;
     color = RED;
   }
@@ -30,7 +30,7 @@ bool IsBigger(const string& x, const string& y) {
   while (i < x.length() && i < y.length()) {
     if (x[i] > y[i]) {
       return true;
-    } else if (x[i] < y[i]){
+    } else if (x[i] < y[i]) {
       return false;
     }
     i++;
@@ -75,17 +75,12 @@ class RedBlackTree {
     return current_node;
   }
 
-  int num_node() const {
-    return num_node_;
-  }
+  int num_node() const { return num_node_; }
 
-  Node* get_root() const {
-    return root_node_;
-  }
+  Node* get_root() const { return root_node_; }
 
-  void InOrderTraversal() {
-    InOrderTraversalRecursive(root_node_);
-  }
+  void InOrderTraversal() { InOrderTraversalRecursive(root_node_); }
+
  private:
   void RotateLeft(Node* x) {
     Node* y = x->right;
@@ -94,7 +89,7 @@ class RedBlackTree {
       y->left->parent = x;
     }
     y->parent = x->parent;
-    if (x->parent == nullptr) { // if x was root
+    if (x->parent == nullptr) {  // if x was root
       root_node_ = y;
     } else if (x == x->parent->left) {
       x->parent->left = y;
@@ -127,7 +122,7 @@ class RedBlackTree {
     while (z != root_node_ && z->color != BLACK && z->parent->color == RED) {
       if (z->parent == z->parent->parent->left) {
         Node* y = z->parent->parent->right;
-        if (y != nullptr && y->color == RED) { // Case 1
+        if (y != nullptr && y->color == RED) {  // Case 1
           z->parent->color = y->color = BLACK;
           z->parent->parent->color = RED;
           z = z->parent->parent;
@@ -145,7 +140,7 @@ class RedBlackTree {
         }
       } else {
         Node* y = z->parent->parent->left;
-        if (y != nullptr && y->color == RED) { // Case 1
+        if (y != nullptr && y->color == RED) {  // Case 1
           z->parent->color = y->color = BLACK;
           z->parent->parent->color = RED;
           z = z->parent->parent;
@@ -206,6 +201,3 @@ int main() {
   rb_tree_ans.InOrderTraversal();
   return 0;
 }
-
-
-

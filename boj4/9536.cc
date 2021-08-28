@@ -5,8 +5,8 @@
 
 #include <algorithm>
 #include <iostream>
-#include <unordered_set>
 #include <string>
+#include <unordered_set>
 #include <vector>
 
 using namespace std;
@@ -26,7 +26,7 @@ int main() {
   for (int t = 0; t < T; t++) {
     string str_sounds;
     getline(cin, str_sounds);
-    
+
     vector<string> sounds;
 
     string buf;
@@ -36,7 +36,7 @@ int main() {
         buf.clear();
       } else if (isalpha(str_sounds[i])) {
         buf += str_sounds[i];
-      } 
+      }
     }
     sounds.push_back(buf);
 
@@ -45,7 +45,7 @@ int main() {
       string temp;
       getline(cin, temp);
       bool done = false;
-      for (int i = 0 ; i < temp.length(); i++) {
+      for (int i = 0; i < temp.length(); i++) {
         if (temp[i] == 's' && temp[i + 1] == 'a' && temp[i + 2] == 'y') {
           done = true;
           break;

@@ -20,7 +20,7 @@ struct Rotation {
   int r, c, s;
 };
 
-vector<Rotation> rotations; 
+vector<Rotation> rotations;
 bool used[6];
 
 int Min(int x, int y) { return x < y ? x : y; }
@@ -28,17 +28,25 @@ int Min(int x, int y) { return x < y ? x : y; }
 void DoRotation(int array[][kMax + 1], Rotation& rot) {
   for (int layer = 1; layer <= rot.s; layer++) {
     vector<int> storage;
-    for (int c = rot.c - layer; c < rot.c + layer; c++) storage.push_back(array[rot.r - layer][c]);
-    for (int r = rot.r - layer; r < rot.r + layer; r++) storage.push_back(array[r][rot.c + layer]);
-    for (int c = rot.c + layer; c > rot.c - layer; c--) storage.push_back(array[rot.r + layer][c]);
-    for (int r = rot.r + layer; r > rot.r - layer; r--) storage.push_back(array[r][rot.c - layer]);
-    
+    for (int c = rot.c - layer; c < rot.c + layer; c++)
+      storage.push_back(array[rot.r - layer][c]);
+    for (int r = rot.r - layer; r < rot.r + layer; r++)
+      storage.push_back(array[r][rot.c + layer]);
+    for (int c = rot.c + layer; c > rot.c - layer; c--)
+      storage.push_back(array[rot.r + layer][c]);
+    for (int r = rot.r + layer; r > rot.r - layer; r--)
+      storage.push_back(array[r][rot.c - layer]);
+
     array[rot.r - layer][rot.c - layer] = storage.back();
     int idx = 0;
-    for (int c = rot.c - layer + 1; c < rot.c + layer; c++, idx++) array[rot.r - layer][c] = storage[idx];
-    for (int r = rot.r - layer; r < rot.r + layer; r++, idx++) array[r][rot.c + layer] = storage[idx];
-    for (int c = rot.c + layer; c > rot.c - layer; c--, idx++) array[rot.r + layer][c] = storage[idx];
-    for (int r = rot.r + layer; r > rot.r - layer; r--, idx++) array[r][rot.c - layer] = storage[idx];
+    for (int c = rot.c - layer + 1; c < rot.c + layer; c++, idx++)
+      array[rot.r - layer][c] = storage[idx];
+    for (int r = rot.r - layer; r < rot.r + layer; r++, idx++)
+      array[r][rot.c + layer] = storage[idx];
+    for (int c = rot.c + layer; c > rot.c - layer; c--, idx++)
+      array[rot.r + layer][c] = storage[idx];
+    for (int r = rot.r + layer; r > rot.r - layer; r--, idx++)
+      array[r][rot.c - layer] = storage[idx];
   }
 }
 
@@ -75,7 +83,7 @@ void DFS(vector<int>& pv) {
 
 int main() {
   scanf("%d%d%d", &N, &M, &K);
-  for (int i = 1 ; i <= N; i++) {
+  for (int i = 1; i <= N; i++) {
     for (int j = 1; j <= M; j++) {
       scanf("%d", &array[i][j]);
     }

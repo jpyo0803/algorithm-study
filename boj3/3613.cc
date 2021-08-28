@@ -9,12 +9,13 @@
 constexpr int kMaxLength = 100;
 
 char input[kMaxLength + 1];
-char output[kMaxLength * 2 + 1]; // in case of every letter is uppercase
+char output[kMaxLength * 2 + 1];  // in case of every letter is uppercase
 
 int main() {
   scanf("%s", input);
 
-  if (!(input[0] >= 'a' && input[0] <= 'z')) { //if first letter is not lowercase
+  if (!(input[0] >= 'a' &&
+        input[0] <= 'z')) {  // if first letter is not lowercase
     printf("Error!\n");
     return 0;
   }
@@ -22,20 +23,20 @@ int main() {
   bool is_java{false}, is_cpp{false};
   const int length = strlen(input);
 
-  if (!((input[length - 1] >= 'a' && input[length - 1] <= 'z')
-      || (input[length - 1] >= 'A' && input[length - 1] <= 'Z'))) {
+  if (!((input[length - 1] >= 'a' && input[length - 1] <= 'z') ||
+        (input[length - 1] >= 'A' && input[length - 1] <= 'Z'))) {
     printf("Error!\n");
     return 0;
   }
 
-  for (int i = 1; i < length; i++) { // no need to check first letter
+  for (int i = 1; i < length; i++) {  // no need to check first letter
     if (input[i] == '_') {
       is_cpp = true;
     }
     if (input[i] >= 'A' && input[i] <= 'Z') {
       is_java = true;
     }
-    if (is_cpp && is_java) { // can't be both cpp and java
+    if (is_cpp && is_java) {  // can't be both cpp and java
       printf("Error!\n");
       return 0;
     }
@@ -71,10 +72,9 @@ int main() {
       }
     }
   } else {
-    strcpy(output, input); // if neither, it is only case when only one word
+    strcpy(output, input);  // if neither, it is only case when only one word
   }
 
   printf("%s\n", output);
   return 0;
 }
-

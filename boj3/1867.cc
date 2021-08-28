@@ -49,4 +49,3 @@ int main() {
   printf("%d\n", run_count);
   return 0;
 }
-

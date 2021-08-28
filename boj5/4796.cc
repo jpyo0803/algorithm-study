@@ -8,14 +8,14 @@
 int Min(int x, int y) { return x < y ? x : y; }
 
 int main() {
-	int L, P, V;
-	scanf("%d%d%d", &L, &P, &V);
-	int case_count = 1;
-	while (L + P + V != 0) {
-		int ans = (V / P) * L + Min(V % P, L);
+  int L, P, V;
+  scanf("%d%d%d", &L, &P, &V);
+  int case_count = 1;
+  while (L + P + V != 0) {
+    int ans = (V / P) * L + Min(V % P, L);
 
-		printf("Case %d: %d\n", case_count++, ans); 
-		scanf("%d%d%d", &L, &P, &V);
-	}
-	return 0;
+    printf("Case %d: %d\n", case_count++, ans);
+    scanf("%d%d%d", &L, &P, &V);
+  }
+  return 0;
 }

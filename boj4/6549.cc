@@ -7,7 +7,6 @@
 #include <cstdint>
 #include <iostream>
 
-
 using namespace std;
 int N;
 int boxes[100000];

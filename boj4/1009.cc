@@ -18,7 +18,7 @@ int main() {
     for (int i = 0; i < 10; i++) freq[i] = false;
     seq.clear();
     const int ld = a % 10;
-   
+
     freq[ld] = true;
     seq.push_back(ld);
     int cd = ld;

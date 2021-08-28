@@ -7,19 +7,19 @@ void T(int n) {
   if (n > 0) {
     /*
     // T(n) = T(n-1) + 1
-      num_op += 1; 
+      num_op += 1;
       T(n-1);
     */
     /*
     // T(n) = T(n-1) + n;
-    for (int i = 0; i < n; i++) { 
+    for (int i = 0; i < n; i++) {
       num_op += 1;
     }
     T(n-1);
     */
     /*
     // T(n) = T(n/2) + 1
-    num_op += 1; 
+    num_op += 1;
     T(n/2);
     */
     /*
@@ -28,17 +28,17 @@ void T(int n) {
     T(n/2);
     T(n/2);
     */
-   /*
-    // T(n) = T(n-1) + n
+    /*
+     // T(n) = T(n-1) + n
+     for (int i = 0; i < n; i++) num_op += 1;
+     T(n/2);
+     */
     for (int i = 0; i < n; i++) num_op += 1;
-    T(n/2);
-    */
-    for (int i = 0; i < n; i++) num_op += 1;
-    T(n/2);
-    T(n/2);
-    T(n/2);
-    T(n/2);
-  } 
+    T(n / 2);
+    T(n / 2);
+    T(n / 2);
+    T(n / 2);
+  }
 }
 
 int main() {

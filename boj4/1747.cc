@@ -3,8 +3,8 @@
 // Link: https://www.acmicpc.net/problem/1747
 //
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 

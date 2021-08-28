@@ -23,9 +23,11 @@ int Ford_Fulkerson(int source, int sink) {
     queue<int> que;
     que.push(source);
     while (!que.empty() && parent[sink] == -1) {
-      int here = que.front(); que.pop();
+      int here = que.front();
+      que.pop();
       for (int there = 1; there <= N; there++) {
-        if (capacity[here][there] - flow[here][there] > 0 && parent[there] == -1) {
+        if (capacity[here][there] - flow[here][there] > 0 &&
+            parent[there] == -1) {
           parent[there] = here;
           que.push(there);
         }

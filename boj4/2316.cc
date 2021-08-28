@@ -32,7 +32,8 @@ int Ford_Fulkerson(int source, int sink) {
       int here = que.front();
       que.pop();
       for (auto& there : adj[here]) {
-        if (capacity[here][there] - flow[here][there] > 0 && parent[there] == -1) {
+        if (capacity[here][there] - flow[here][there] > 0 &&
+            parent[there] == -1) {
           parent[there] = here;
           que.push(there);
         }

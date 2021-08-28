@@ -4,8 +4,8 @@
 //
 
 #include <cstdio>
-#include <vector>
 #include <unordered_set>
+#include <vector>
 
 using namespace std;
 
@@ -20,7 +20,7 @@ vector<pair<int, int>> remain_locations;
 vector<pair<int, int>> subtract_locations;
 
 int d[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-bool IsDivided(pair<int, int> &start) {
+bool IsDivided(pair<int, int>& start) {
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < M; j++) {
       visited[i][j] = false;
@@ -33,11 +33,12 @@ bool IsDivided(pair<int, int> &start) {
   visited[start.first][start.second] = true;
   while (!frontier.empty()) {
     next.clear();
-    for (auto &u : frontier) {
+    for (auto& u : frontier) {
       for (int i = 0; i < 4; i++) {
         int vr = u.first + d[i][0];
         int vc = u.second + d[i][1];
-        if (vr >= 0 && vr < N && vc >= 0 && vc < M && !visited[vr][vc] && remain_map[vr][vc] > 0) {
+        if (vr >= 0 && vr < N && vc >= 0 && vc < M && !visited[vr][vc] &&
+            remain_map[vr][vc] > 0) {
           visited[vr][vc] = true;
           num_visited += 1;
           next.emplace_back(vr, vc);

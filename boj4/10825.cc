@@ -3,8 +3,8 @@
 // Link: https://www.acmicpc.net/problem/10825
 //
 
-#include <cstdio>
 #include <algorithm>
+#include <cstdio>
 #include <cstring>
 
 constexpr int kMaxSize = 100000;
@@ -19,21 +19,30 @@ struct Info {
 Info infos[kMaxSize];
 
 bool compare(Info &x, Info &y) {
-  if (x.kook > y.kook) return true;
-  else if (x.kook < y.kook) return false;
+  if (x.kook > y.kook)
+    return true;
+  else if (x.kook < y.kook)
+    return false;
   else {
-    if (x.young < y.young) return true;
-    else if (x.young > y.young) return  false;
+    if (x.young < y.young)
+      return true;
+    else if (x.young > y.young)
+      return false;
     else {
-      if (x.soo > y.soo) return true;
-      else if (x.soo < y.soo) return false;
+      if (x.soo > y.soo)
+        return true;
+      else if (x.soo < y.soo)
+        return false;
       else {
         int i = 0;
         int j = 0;
         while (i < strlen(x.name) && j < strlen(y.name)) {
-          if (x.name[i] < y.name[i]) return true;
-          else if (x.name[i] > y.name[i]) return false;
-          i++; j++;
+          if (x.name[i] < y.name[i])
+            return true;
+          else if (x.name[i] > y.name[i])
+            return false;
+          i++;
+          j++;
         }
         return strlen(x.name) < strlen(y.name);
       }
@@ -57,4 +66,3 @@ int main() {
   }
   return 0;
 }
-

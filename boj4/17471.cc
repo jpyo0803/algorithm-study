@@ -21,14 +21,15 @@ bool assignment[kMax];
 
 int Check(int start_node) {
   bool visited[N];
-  for (int i = 1; i <= N; i++) visited[i] = false; 
+  for (int i = 1; i <= N; i++) visited[i] = false;
   queue<int> que;
   que.push(start_node);
   visited[start_node] = true;
 
   int node_visited = 1;
   while (!que.empty()) {
-    int v = que.front(); que.pop();
+    int v = que.front();
+    que.pop();
     for (int u = 1; u <= N; u++) {
       if (adj[v][u] && !visited[u] && assignment[start_node] == assignment[u]) {
         visited[u] = true;
@@ -80,7 +81,7 @@ int main() {
       adj[u][v] = adj[v][u] = true;
     }
   }
-  
+
   int ans = DFS(assignment, 1);
   printf("%d\n", ans == INF ? -1 : ans);
   return 0;

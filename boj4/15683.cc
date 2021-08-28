@@ -72,7 +72,8 @@ int DFS(Floor cf, int nth) {
     for (int i = 0; i < 4; i++) {
       Floor nf = cf;
       nf.DoCover(cameras[nth].r, cameras[nth].c, i);
-      nf.DoCover(cameras[nth].r, cameras[nth].c, ((i + 1) % 4)); // Damn it... i + 1 % 4 makes error
+      nf.DoCover(cameras[nth].r, cameras[nth].c,
+                 ((i + 1) % 4));  // Damn it... i + 1 % 4 makes error
       ret = Min(ret, DFS(nf, nth + 1));
     }
   } else if (camera_type == 4) {

@@ -1,16 +1,17 @@
 /*
   Merge sort implementation
   O(nlogn)
-  Merge sort's advantage is that it almost always keeps nlogn (ie, quick sort sometimes gets O(n^2) worst case)
-  But bad side is that it requires extra space for merge operation 
+  Merge sort's advantage is that it almost always keeps nlogn (ie, quick sort
+  sometimes gets O(n^2) worst case) But bad side is that it requires extra space
+  for merge operation
 */
 
+#include <algorithm>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 #include <queue>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
@@ -100,9 +101,10 @@ int main() {
       break;
     }
   }
-  if (same) cout << "match!\n";
-  else cout << "Not match!\n";
-
+  if (same)
+    cout << "match!\n";
+  else
+    cout << "Not match!\n";
 
   return 0;
 }

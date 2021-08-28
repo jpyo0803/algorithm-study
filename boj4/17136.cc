@@ -54,9 +54,9 @@ void DFS(Paper cp, int start_r, int start_c) {
       }
     }
     c = 0;
-  } 
-  
-  if (target_r == -1) { // spot_to_cover = 0
+  }
+
+  if (target_r == -1) {  // spot_to_cover = 0
     ans = cp.GetPaperUsed();
     return;
   }
@@ -66,7 +66,7 @@ void DFS(Paper cp, int start_r, int start_c) {
     Paper np = cp;
     if (!np.TryCover(target_r, target_c, edge)) continue;
     int nr = target_r, nc = 0;
-    if (target_c + edge >= 10) { // next row
+    if (target_c + edge >= 10) {  // next row
       nr += 1;
     } else {
       nc = target_c + edge;

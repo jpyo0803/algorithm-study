@@ -16,7 +16,7 @@ class SquareMatrix {
   int arr[5][5];
   int size = N;
   SquareMatrix(int _size) : size(_size){};
-  
+
   SquareMatrix Idendity() const {
     SquareMatrix ret(size);
     for (int i = 0; i < ret.size; i++) {
@@ -57,7 +57,6 @@ int main() {
       scanf("%d", &A.arr[i][j]);
     }
   }
-
 
   SquareMatrix ans = Pow(A, B);
   for (int i = 0; i < ans.size; i++) {

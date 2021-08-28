@@ -14,7 +14,7 @@ vector<int> decimals;
 
 int Conversion(int rem, int den) {
   int frequency_table[kMaxSize];
-  for (int i = 0 ; i < kMaxSize; i++) frequency_table[i] = -1;
+  for (int i = 0; i < kMaxSize; i++) frequency_table[i] = -1;
   decimals.clear();
   int idx = 0;
   while (num > 0) {
@@ -44,5 +44,3 @@ int main() {
 
   return 0;
 }
-
-

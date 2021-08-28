@@ -64,8 +64,10 @@ int main() {
   char expression[21];
   scanf("%d%s", &N, expression);
   for (int i = 0; i < N; i++) {
-    if (i % 2) op[i / 2] = expression[i];
-    else numbers[i / 2] = Char2Int(expression[i]);
+    if (i % 2)
+      op[i / 2] = expression[i];
+    else
+      numbers[i / 2] = Char2Int(expression[i]);
   }
 
   DFS(0);

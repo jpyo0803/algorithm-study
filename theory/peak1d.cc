@@ -1,6 +1,6 @@
-/* 
+/*
   Peak Finder 1-D.
-  This algorithm finds a peak from 1-D array 
+  This algorithm finds a peak from 1-D array
   It uses divide and conquer algorithm
   Time complexity is log2(n)
 */
@@ -51,6 +51,7 @@ int main() {
 
   int res = find_peak1d(arr, 0, N - 1);
   cout << "found val = " << res << "\nreal value = " << peak_val << endl;
-  cout << "sample size = " << N << " / Time complexity = " << time_complexity << endl; 
+  cout << "sample size = " << N << " / Time complexity = " << time_complexity
+       << endl;
   return 0;
 }

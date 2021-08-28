@@ -1,14 +1,14 @@
-/* 
+/*
   Peak Finder 2-D.
-  This algorithm finds a peak from 2-D array 
+  This algorithm finds a peak from 2-D array
   It uses divide and conquer algorithm
   Time complexity is n*log2(m)
 */
+#include <cstring>
 #include <iostream>
 #include <random_number_generator.hpp>
-#include <cstring>
-#include <vector>
 #include <utility>
+#include <vector>
 
 using namespace std;
 
@@ -88,13 +88,14 @@ int main() {
   int peak_pos_c = get_random_number(0, N - 1);
   int peak_val = N * N * 2;
 
-  int trail_len = N*N / 4;
+  int trail_len = N * N / 4;
 
   filler(N, peak_pos_r, peak_pos_c, peak_val);
 
   int res = find_peak2d(0, N - 1);
   cout << "found val = " << res << "\nreal value = " << peak_val << endl;
-  cout << "sample size = " << N*N << " / time complexity = " << time_complexity << endl;
+  cout << "sample size = " << N * N
+       << " / time complexity = " << time_complexity << endl;
 
   return 0;
 }

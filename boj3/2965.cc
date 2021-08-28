@@ -6,8 +6,8 @@
 #include <cstdio>
 int A, B, C;
 int main() {
-    scanf("%d%d%d", &A, &B, &C);
-    int larger = (B - A) > (C - B) ? (B - A) : (C - B);
-    printf("%d", larger - 1);
-    return 0;
+  scanf("%d%d%d", &A, &B, &C);
+  int larger = (B - A) > (C - B) ? (B - A) : (C - B);
+  printf("%d", larger - 1);
+  return 0;
 }

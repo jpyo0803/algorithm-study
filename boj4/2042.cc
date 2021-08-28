@@ -17,10 +17,10 @@ int64_t numbers[kMaxSize];
 struct RSQ {
   int n;
   int64_t range_sum[kMaxSize * 4];
-  
+
   RSQ(int64_t array[], int sz) {
-   n = sz;
-   init(array, 0, n - 1, 1);
+    n = sz;
+    init(array, 0, n - 1, 1);
   }
 
   int64_t init(int64_t array[], int left, int right, int node) {

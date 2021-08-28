@@ -54,7 +54,8 @@ Node *Insert(Node *current_node, Node *new_node) {
     current_node->left_ = Insert(current_node->left_, new_node);
   }
 
-  current_node->height_ = Max(GetHeight(current_node->left_), GetHeight(current_node->right_)) + 1;
+  current_node->height_ =
+      Max(GetHeight(current_node->left_), GetHeight(current_node->right_)) + 1;
 
   int balance = GetBalance(current_node);
 
@@ -109,7 +110,7 @@ int main() {
     if (number == 0) {
       printf("%d\n", Search(root, request));
     } else {
-      printf("%s\n",  names[number - 1].c_str());
+      printf("%s\n", names[number - 1].c_str());
     }
   }
   return 0;

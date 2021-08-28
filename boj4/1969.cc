@@ -28,7 +28,9 @@ int main() {
   min_dist = 0;
   min_dist_str = "";
   for (int i = 0; i < M; i++) {
-    int freq_cnt[4] = {0, };
+    int freq_cnt[4] = {
+        0,
+    };
     for (auto& dna : dnas) {
       for (int j = 0; j < 4; j++) {
         if (dna[i] == CHARS[j]) {
@@ -37,7 +39,7 @@ int main() {
         }
       }
     }
-    
+
     int local_max = 0;
     int local_max_idx;
     for (int j = 0; j < 4; j++) {

@@ -4,8 +4,8 @@
 //
 
 #include <cstdio>
-#include <vector>
 #include <set>
+#include <vector>
 
 using namespace std;
 
@@ -73,7 +73,8 @@ int main() {
     if (matched_count == N) answers.insert(numbers[b]);
   }
 
-  if (answers.size() == 0) printf("-1");
+  if (answers.size() == 0)
+    printf("-1");
   else {
     for (auto& answer : answers) {
       printf("%d ", answer);
@@ -82,4 +83,3 @@ int main() {
 
   return 0;
 }
-

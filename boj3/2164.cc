@@ -19,9 +19,9 @@ int main() {
     if (deq.size() == 1) break;
     deq.pop_front();
     if (deq.size() == 1) break;
-    deq.push_back(deq.front()); deq.pop_front();
+    deq.push_back(deq.front());
+    deq.pop_front();
   }
   printf("%d\n", deq.front());
   return 0;
 }
-
