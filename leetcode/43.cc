@@ -3,6 +3,101 @@
 // Problem: https://leetcode.com/problems/multiply-strings/
 //
 
+// First Idea
+class Solution {
+ public:
+  void StringAdd(string& a, const string& b) {
+    int carry = 0;
+    for (int i = 0; i < b.size(); ++i) {
+      int na, nb;
+      if (i >= a.size()) a.push_back('0');
+      na = a[i] - '0';
+      nb = b[i] - '0';
+      int nc = na + nb + carry;
+      carry = 0;
+      if (nc > 9) {
+        carry = 1;
+        nc %= 10;
+      }
+      a[i] = static_cast<char>(nc + '0');
+    }
+    if (carry > 0) {
+      a.push_back('1');
+    }
+  }
+
+  void StringDigitMultiply(string& ret, const string& a, char digit,
+                           int offset) {
+    ret.clear();
+
+    int nb = digit - '0';
+    int carry = 0;
+    for (auto ch : a) {
+      int na = ch - '0';
+      int nc = na * nb + carry;
+      ret.push_back(static_cast<char>(nc % 10 + '0'));
+      carry = nc / 10;
+    }
+    if (carry > 0) {
+      ret.push_back(carry + '0');
+    }
+    string zeros;
+    for (int i = 0; i < offset; ++i) zeros.push_back('0');
+    ret.insert(0, zeros);
+  }
+
+  string multiply(string num1, string num2) {
+    reverse(num1.begin(), num1.end());
+    string ans;
+
+    string tmp;
+    for (int i = 0; i < num2.size(); ++i) {
+      int ri = num2.size() - 1 - i;
+      tmp.clear();
+      StringDigitMultiply(tmp, num1, num2[ri], i);
+      StringAdd(ans, tmp);
+    }
+    while (ans.size() > 1 && ans.back() == '0') ans.pop_back();
+    reverse(ans.begin(), ans.end());
+    return ans;
+  }
+};
+
+// Second Idea
+class Solution {
+ public:
+  string multiply(string num1, string num2) {
+    reverse(num1.begin(), num1.end());
+    reverse(num2.begin(), num2.end());
+
+    vector<int> nums(num1.size() + num2.size(), 0);
+
+    for (int i = 0; i < num1.size(); ++i) {
+      for (int j = 0; j < num2.size(); ++j) {
+        int a = num1[i] - '0';
+        int b = num2[j] - '0';
+        int c = a * b;
+        nums[i + j] += c % 10;
+        nums[i + j + 1] += c / 10;
+      }
+    }
+
+    string ans;
+    for (int i = 0; i < nums.size() - 1; ++i) {
+      if (nums[i] > 9) {
+        nums[i + 1] += nums[i] / 10;
+        nums[i] %= 10;
+      }
+      ans.push_back(nums[i] + '0');
+    }
+    ans.push_back(nums.back() + '0');
+    while (ans.size() > 1 && ans.back() == '0') ans.pop_back();
+    reverse(ans.begin(), ans.end());
+    return ans;
+  }
+};
+
+// Karatsuba
 int Min(int x, int y) { return x < y ? x : y; }
 int Max(int x, int y) { return x > y ? x : y; }
 int Abs(int x) { return x < 0 ? -x : x; }
