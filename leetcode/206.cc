@@ -1,0 +1,29 @@
+// 206. Reverse Linked List
+// https://leetcode.com/problems/reverse-linked-list/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+ public:
+  ListNode* reverseList(ListNode* head) {
+    if (!head || !head->next) return head;
+    ListNode* prev = head;
+    ListNode* now = head->next;
+    prev->next = nullptr;
+    while (now) {
+      auto nn = now->next;
+      now->next = prev;
+      prev = now;
+      now = nn;
+    }
+    return prev;
+  }
+};
