@@ -16,6 +16,7 @@
  * };
  */
 
+// First Try
 int Max(int x, int y) { return x < y ? y : x; }
 
 class Solution {
@@ -25,5 +26,17 @@ class Solution {
     if (root == nullptr) return h;
     h = Max(maxDepth(root->right) + 1, maxDepth(root->left) + 1);
     return h;
+  }
+};
+
+// Second Try
+class Solution {
+ public:
+  static int Max(int x, int y) { return x < y ? y : x; }
+
+  int maxDepth(TreeNode* root) {
+    if (root == nullptr) return 0;
+
+    return Max(maxDepth(root->left), maxDepth(root->right)) + 1;
   }
 };
