@@ -1,0 +1,19 @@
+
+// Speeding Ticket
+// http://www.usaco.org/index.php?page=viewproblem2&cpid=568
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+pair<int, int> speeds[105];
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  cout.tie(nullptr);
+
+
+  return 0;
+}
