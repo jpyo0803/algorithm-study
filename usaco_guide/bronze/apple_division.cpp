@@ -5,27 +5,15 @@
 
 using namespace std;
 
-int N;
-long long ans = 1e15;
-long long sum = 0;
-
-void Search(const vector<int>& apples, int k, long long b) {
-  if (k == N) {
-    long long a = sum - b;
-    ans = min(ans, abs(a - b));
-    return;
-  }
-
-  Search(apples, k + 1, b);
-  Search(apples, k + 1, b + apples[k]);
-}
-
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   cout.tie(nullptr);
 
+  int N;
   cin >> N;
+
+  long long sum = 0;
 
   vector<int> apples(N);
   for (int i = 0; i < N; ++i) {
@@ -33,7 +21,19 @@ int main() {
     sum += apples[i];
   }
 
-  Search(apples, 0, 0);
+  long long ans = 1e15;
+
+  for (int i = 0; i < (1 << N); ++i) {
+    long long b = 0;
+    for (int j = 0; j < N; ++j) {
+      if (i & (1 << j)) {
+        b += apples[j];
+      }
+    }
+    long long a = sum - b;
+    ans = min(ans, abs(a - b));
+  }
+
   cout << ans << "\n";
 
   return 0;
