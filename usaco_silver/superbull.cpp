@@ -35,12 +35,12 @@ int main() {
   for (int u = 0; u < N - 1; ++u) {
     for (int v = u + 1; v < N; ++v) {  // O(V^2)
       int w = vertice[u] ^ vertice[v];
-      edges.emplace_back(u, v, w);
+      edges.emplace_back(u, v, -w);
     }
   }
 
   sort(edges.begin(), edges.end(), [](const Edge& x, const Edge& y) {
-    return x.w > y.w;
+    return x.w < y.w;
   });  // non decreasing order
 
   long long ans = 0;
@@ -53,7 +53,7 @@ int main() {
     }
   }
 
-  cout << ans << "\n";
+  cout << -ans << "\n";
 
   return 0;
 }
