@@ -32,33 +32,12 @@ int main() {
   }
 
   int ans = 0;
-  while (true) {
-    vector<pair<int, int>> frontier;
-
-    for (int i = 0; i < N; ++i) {
-      for (int j = 0; j < N; ++j) {
-        if (arr[i][j] == false) continue;
-
-        bool ok = true;
-        for (int ii = i; ii < N; ++ii) {
-          for (int jj = j; jj < N; ++jj) {
-            if (ii == i && jj == j) continue;
-            if (arr[ii][jj] == true) {
-              ok = false;
-            }
-          }
-        }
-
-        if (ok == true) {
-          frontier.emplace_back(i, j);
-        }
-      }
+  for (int i = N - 1; i >= 0; --i) {
+    for (int j = N - 1; j >= 0; --j) {
+      if (arr[i][j] == false) continue;
+      Flip(i, j);
+      ans++;
     }
-
-    if (frontier.empty() == true) break;
-
-    Flip(frontier.back().first, frontier.back().second);
-    ans++;
   }
 
   cout << ans << "\n";
