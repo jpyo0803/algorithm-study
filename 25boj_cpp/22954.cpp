@@ -64,29 +64,6 @@ int main() {
   vector<pair<int, int>> ev(m + 10);
   for (int i = 1; i <= m; ++i) { 
     cin >> ev[i].first >> ev[i].second;
-
-    int u = ev[i].first;
-    int v = ev[i].second;
-    adj_list[u].emplace_back(v, i);
-    adj_list[v].emplace_back(u, i);
-  }
-
-  int ccnt = 0;
-  for (int i = 1; i <= n; ++i) {
-    if (visited[i] == false) {
-      vector<int> a,b;
-      Dfs(i, a, b);
-      ccnt++;
-    }
-  }
-  if (ccnt >= 3) {
-    cout << "-1\n";
-    return 0;
-  }
-
-  for (int i = 1; i <= n; ++i) {
-    adj_list[i].clear();
-    visited[i] = false;
   }
 
   int edge_cnt = 0;
@@ -107,7 +84,10 @@ int main() {
     }
   }
 
-  if (edge_cnt == n - 1) {
+  if (edge_cnt < n - 2) {
+    cout << "-1\n";
+    return 0;
+  } else if (edge_cnt == n - 1) {
     // disconnect a vertex with one edge
     for (int i = 1; i <= n; ++i) {
       if (adj_list[i].size() == 1) {
