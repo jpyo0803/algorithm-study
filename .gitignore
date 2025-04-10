@@ -42,3 +42,5 @@ cmake-build-debug
 .cph
 *.bin
 
+# c# and typescript
+25boj_cs_ts
