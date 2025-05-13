@@ -9,7 +9,7 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 docker build -t $IMAGE_NAME "$REPO_ROOT/docker"
 
 # 컨테이너 실행
-docker run -it --rm \
+docker run -it \
   -v "$REPO_ROOT":/home/user/algorithm-study \
   -w /home/user/algorithm-study \
   $IMAGE_NAME
