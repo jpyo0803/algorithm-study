@@ -7,22 +7,32 @@ using namespace std;
 
 int n;
 
-int arr[1005];
+int delta[1005];
 
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   cout.tie(nullptr);
 
+
   cin >> n;
+
   for (int i = 0; i < n; ++i) {
     int s, t, b;
     cin >> s >> t >> b;
-    for (int j = s; j <= t; ++j) arr[j] += b;
+    delta[s] += b;
+    delta[t] -= b;
   }
 
   int ans = 0;
-  for (int i = 1; i <= 1000; ++i) ans = max(ans, arr[i]);
+
+  int sum = 0;
+
+  for (int i = 1; i <= 1e3; ++i) {
+    sum += delta[i];
+    ans = max(ans, sum);
+  } 
+
   cout << ans << "\n";
 
   return 0;
