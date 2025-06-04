@@ -44,3 +44,5 @@ cmake-build-debug
 
 # c# and typescript
 25boj_cs_ts
+
+test.*
