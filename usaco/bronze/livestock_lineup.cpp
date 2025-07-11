@@ -1,4 +1,4 @@
-// Livestock Lineup
+// Livestock Lineup (Bronze)
 // https://www.acmicpc.net/problem/
 
 #include <bits/stdc++.h>
@@ -7,43 +7,56 @@ using namespace std;
 
 int n;
 
+map<string, vector<string>> adj_list;
+set<string> ss = {"Bessie", "Buttercup", "Belinda", "Beatrice",
+                  "Bella",  "Blue",      "Betsy",   "Sue"};
+
+void Dfs(vector<string>& chain, const string& u) {
+  chain.push_back(u);
+  ss.erase(ss.find(u));
+  for (const auto& v : adj_list[u]) {
+    if (ss.find(v) == ss.end()) continue;
+    Dfs(chain, v);
+  }
+}
+
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   cout.tie(nullptr);
 
   cin >> n;
-
-  vector<pair<string, string>> constraints(n);
   for (int i = 0; i < n; ++i) {
-    string trash;
-    cin >> constraints[i].first;
+    string a, b, trash;
+    cin >> a;
     for (int j = 0; j < 4; ++j) cin >> trash;
-    cin >> constraints[i].second;
+    cin >> b;
+    adj_list[a].push_back(b);
+    adj_list[b].push_back(a);
   }
-  
-  vector<string> cows = {"Bessie", "Buttercup", "Belinda", "Beatrice", "Bella", "Blue", "Betsy", "Sue"};
-  sort(cows.begin(), cows.end());
-  
-  do {
-    bool ok = true;
-    for (int i = 0; i < n; ++i) {
-      string a, b;
-      tie(a, b) = constraints[i];
-      for (int j = 0; j < 8; ++j) {
-        if (cows[j] == a) {
-          bool left = false, right = false;
-          if (j - 1 >= 0 && cows[j - 1] == b) left = true;
-          if (j + 1 < 8 && cows[j + 1] == b) right = true;
-          if (!left && !right) ok = false;
-        }
-      }
-    }
-    if (ok) break;
-  } while (next_permutation(cows.begin(), cows.end()));
 
-  for (const auto& cow: cows) {
-    cout << cow << "\n";
+  vector<string> vv;
+  for (auto& e : ss) vv.push_back(e);
+
+  vector<vector<string>> ans;
+  for (auto& key : vv) {
+    if (ss.find(key) == ss.end()) continue;
+    int sz = adj_list[key].size();
+    if (sz == 2) continue;
+    vector<string> chain;
+    Dfs(chain, key);
+    ans.push_back(chain);
+  }
+
+  sort(ans.begin(), ans.end(),
+       [](const vector<string>& v1, const vector<string>& v2) {
+         return v1[0] < v2[0];
+       });
+
+  for (auto& v : ans) {
+    for (auto& e : v) {
+      cout << e << "\n";
+    }
   }
 
   return 0;
