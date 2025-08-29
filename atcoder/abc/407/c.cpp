@@ -1,5 +1,5 @@
 // C - Security 2 (ABC)
-// https://atcoder.jp/contests/abc407/tasks/abc408_c
+// https://atcoder.jp/contests/abc407/tasks/abc407_c
 
 #include <bits/stdc++.h>
 
