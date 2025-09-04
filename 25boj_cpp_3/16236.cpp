@@ -1,5 +1,5 @@
-// 
-// https://www.acmicpc.net/problem/
+// 아기 상어
+// https://www.acmicpc.net/problem/16236
 
 #include <bits/stdc++.h>
 
