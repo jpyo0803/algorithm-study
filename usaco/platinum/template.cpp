@@ -1,5 +1,5 @@
 // (Platinum)
-// https://www.acmicpc.net/problem/
+// https://usaco.org/
 
 #include <bits/stdc++.h>
 
