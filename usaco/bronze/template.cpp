@@ -12,5 +12,8 @@ int main() {
   cin.tie(nullptr);
   cout.tie(nullptr);
 
+  // ifstream fin("input_file.in");
+  // ofstream fout("output_file.out");
+  
   return 0;
 }
